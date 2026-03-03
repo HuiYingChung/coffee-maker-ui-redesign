@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Espresso Machine UI Redesign</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- ========================================= -->
+  <!-- PAGE HEADER -->
+  <!-- ========================================= -->
+  <header>
+    <h1>Redesigned Entry-Level Espresso Machine Interface</h1>
+    <p>
+      Minimal hardware changes. Improved affordances, mapping,
+      feedback, and error prevention.
+    </p>
+  </header>
+
+
+  <!-- ========================================= -->
+  <!-- MAIN MACHINE PANEL -->
+  <!-- ========================================= -->
+  <section class="machine">
+
+    <!-- Brand strip (visual only, not a real trademark asset) -->
+    <div class="brand">KitchenAid</div>
+
+
+    <!-- ========================================= -->
+    <!-- GROUP 1: SETUP / POWER -->
+    <!-- ========================================= -->
+    <div class="group" id="group-setup">
+      <h2>Setup / Power</h2>
+
+      <!-- Power -->
+      <button class="barbtn" id="btnPower" data-locked="false" type="button">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2v10M5.5 5.5a8 8 0 1 0 13 0"/></svg>
+        </span>
+        <span class="label">Power</span>
+      </button>
+
+      <!-- Temperature -->
+      <button class="barbtn" id="btnTemp" data-locked="false" type="button">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 3v10a4 4 0 1 0 4 4"/></svg>
+        </span>
+        <span class="label">Temp</span>
+      </button>
+
+      <!-- Temperature LEDs -->
+      <div class="led-group" id="temp-leds" aria-label="Temperature indicators">
+        <div class="led" id="ledTempLow">Low</div>
+        <div class="led" id="ledTempMed">Medium</div>
+        <div class="led" id="ledTempHigh">High</div>
+      </div>
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- GROUP 2: MODE SELECTION -->
+    <!-- (Brew + Steam + Clean live here) -->
+    <!-- ========================================= -->
+    <div class="group" id="group-modes">
+      <h2>Mode Selection</h2>
+
+      <!-- Brew: Single / Double -->
+      <button class="barbtn" id="btnSingle" data-locked="false" type="button">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="6" y="8" width="12" height="8" rx="2"/></svg>
+        </span>
+        <span class="label">Single</span>
+      </button>
+
+      <button class="barbtn" id="btnDouble" data-locked="false" type="button">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <rect x="3" y="8" width="8" height="8" rx="2"/>
+            <rect x="13" y="8" width="8" height="8" rx="2"/>
+          </svg>
+        </span>
+        <span class="label">Double</span>
+      </button>
+
+      <!-- Steam -->
+      <button class="barbtn" id="btnSteam" data-locked="false" type="button">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M6 16c0-4 12-4 12 0"/>
+            <path d="M8 12c0-3 8-3 8 0"/>
+          </svg>
+        </span>
+        <span class="label">Steam</span>
+      </button>
+
+      <!-- Clean -->
+      <button class="barbtn" id="btnClean" data-locked="false" type="button">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 12a8 8 0 1 1 2.5 5.8"/>
+            <polyline points="4 4 4 12 12 12"/>
+          </svg>
+        </span>
+        <span class="label">Clean</span>
+      </button>
+
+      <!-- Status LEDs (add Steam LED so mode is visible) -->
+      <div class="led-group" id="status-leds" aria-label="Machine status indicators">
+        <div class="led" id="ledPreheat">Preheating</div>
+        <div class="led" id="ledReady">Ready</div>
+
+        <div class="led" id="ledBrewing">Brewing</div>
+        <div class="led" id="ledSteam">Steaming</div>
+        <div class="led" id="ledCleaning">Cleaning</div>
+
+        <div class="led" id="ledLowWater">Low Water</div>
+      </div>
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- GROUP 3: EXECUTION -->
+    <!-- (Shared Start/Stop button lives here) -->
+    <!-- ========================================= -->
+    <div class="group" id="group-exec">
+      <h2>Start / Stop</h2>
+
+      <!-- Shared Start/Stop -->
+      <button class="barbtn" id="btnStartStop" data-locked="false" type="button" aria-label="Start or Stop">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 34 25">
+            <polygon points="4,4 14,12 4,20"></polygon>
+            <line x1="18" y1="3" x2="18" y2="21"></line>
+            <rect x="23" y="7" width="10" height="10"></rect>
+          </svg>
+        </span>
+        <span class="label">Start / Stop</span>
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================= -->
+  <!-- HOW TO USE THIS UI (Prototype Instructions) -->
+  <!-- ========================================= -->
+  <section class="howto">
+    <h3>How to Use This UI (Prototype)</h3>
+    <ol>
+      <li><strong>Power On:</strong> Click <em>Power</em>. The machine enters <em>Preheating</em>, then switches to <em>Ready</em> with <strong>three long beeps</strong>.</li>
+      <li><strong>Select a Mode:</strong> Choose <em>Single</em>, <em>Double</em>, <em>Steam</em>, or <em>Clean</em>. The selected mode will highlight.</li>
+      <li><strong>Start / Stop:</strong> Click <em>Start</em> to run the selected mode. While running, the button label changes to <em>Stop</em>. Click <em>Stop</em> to cancel the operation.</li>
+      <li><strong>Temperature:</strong> When the machine is <em>Ready</em>, click <em>Temp</em> to cycle <em>Low → Medium → High</em>.</li>
+      <li><strong>Low Water (Demo Toggle):</strong> Hold <strong>Shift</strong> and click <em>Power</em> to toggle <em>Low Water</em>. When active, the yellow light blinks and <strong>all controls are locked</strong> except <em>Power</em>. Clicking locked controls triggers <strong>two short beeps</strong>.</li>
+    </ol>
+  </section>
+
+
+  <!-- ========================================= -->
+  <!-- DESIGN ANNOTATIONS (For Assignment) -->
+  <!-- ========================================= -->
+  <section class="annotations">
+    <h3>Design Improvements</h3>
+    <ul>
+      <li>Thicker horizontal bar buttons improve physical affordance.</li>
+      <li>Mode selection is separated from execution (Start/Stop) to reduce accidental actions.</li>
+      <li>Clearer LED behaviors and consistent feedback improve learnability.</li>
+      <li>Low Water warning prevents operational errors and supports error prevention.</li>
+    </ul>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
