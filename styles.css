@@ -27,7 +27,7 @@
 
   /* Typography */
   --text:  #f6f7fb;
-  --muted: rgba(255, 255, 255, .78);
+  --muted: rgba(255, 255, 255, .72);
 }
 
 
@@ -45,11 +45,11 @@
 body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   background:
-    radial-gradient(900px 520px at 20% 0%, rgba(255,255,255,.10), transparent),
-    radial-gradient(1200px 700px at 80% 10%, rgba(255,0,60,.12), transparent),
+    radial-gradient(900px 520px at 20% 0%, rgba(255,255,255,.08), transparent),
+    radial-gradient(1200px 700px at 80% 10%, rgba(255,0,60,.10), transparent),
     #0b0c0f;
   color: var(--text);
-  padding: 34px 18px;
+  padding: 40px 20px;
   line-height: 1.5;
 }
 
@@ -59,250 +59,241 @@ body {
    ========================================= */
 
 header {
-  max-width: 980px;
-  margin: 0 auto 18px;
+  max-width: 960px;
+  margin: 0 auto 22px;
 }
 
 h1 {
-  font-size: 20px;
-  letter-spacing: .2px;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: .1px;
   margin-bottom: 6px;
 }
 
 header p {
   color: var(--muted);
-  font-size: 13.5px;
-  max-width: 70ch;
+  font-size: 13px;
+  max-width: 68ch;
 }
 
 
 /* =========================================
-   MACHINE PANEL  (KitchenAid red shell)
+   MACHINE PANEL  (KitchenAid red body)
    ========================================= */
 
 .machine {
-  max-width: 980px;
-  margin: 14px auto 0;
-  border-radius: 22px;
-  padding: 22px;
-  border: 1px solid rgba(0,0,0,.55);
+  max-width: 960px;
+  margin: 0 auto;
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid rgba(0,0,0,.60);
   position: relative;
   display: grid;
-  gap: 14px;
+  gap: 12px;
 
   background:
-    radial-gradient(900px 260px at 20% 0%, rgba(255,255,255,.22), transparent 60%),
-    radial-gradient(900px 260px at 70% 10%, rgba(255,255,255,.10), transparent 55%),
-    linear-gradient(180deg, var(--ka-red-3), var(--ka-red-2) 35%, var(--ka-red-1));
+    radial-gradient(800px 220px at 18% 0%, rgba(255,255,255,.20), transparent 55%),
+    radial-gradient(600px 180px at 75% 5%,  rgba(255,255,255,.09), transparent 50%),
+    linear-gradient(175deg, var(--ka-red-3) 0%, var(--ka-red-2) 30%, var(--ka-red-1) 100%);
   box-shadow:
-    0 26px 60px rgba(0,0,0,.55),
-    inset 0 1px 0 rgba(255,255,255,.18),
-    inset 0 -18px 24px rgba(0,0,0,.35);
+    0 30px 70px rgba(0,0,0,.60),
+    0  6px 16px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.20),
+    inset 0 -20px 28px rgba(0,0,0,.30);
 }
 
-/* Subtle metallic trim line near the top */
+/* Top-edge gloss shine */
 .machine::before {
   content: "";
   position: absolute;
-  left: 18px; right: 18px; top: 14px;
+  left: 20px; right: 20px; top: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,.14), transparent);
-  pointer-events: none;
-}
-
-/* Brushed-steel band (KitchenAid logo ring) */
-.machine::after {
-  content: "";
-  position: absolute;
-  left: 18px; right: 18px; top: 16px;
-  height: 14px;
-  border-radius: 999px;
-  background:
-    linear-gradient(90deg,
-      rgba(255,255,255,.10),
-      rgba(255,255,255,.35) 15%,
-      rgba(0,0,0,.20) 40%,
-      rgba(255,255,255,.25) 65%,
-      rgba(255,255,255,.10)
-    ),
-    linear-gradient(180deg, var(--steel-3), var(--steel-1));
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.35),
-    inset 0 -1px 0 rgba(0,0,0,.35);
-  opacity: .92;
+  border-radius: 20px 20px 0 0;
+  background: linear-gradient(90deg,
+    transparent 5%,
+    rgba(255,255,255,.30) 30%,
+    rgba(255,255,255,.35) 50%,
+    rgba(255,255,255,.30) 70%,
+    transparent 95%
+  );
   pointer-events: none;
 }
 
 /* 3-column layout on wide screens */
-@media (min-width: 900px) {
+@media (min-width: 860px) {
   .machine {
-    grid-template-columns: 1.05fr 1.4fr 1.05fr;
+    grid-template-columns: 1fr 1.35fr 1fr;
     align-items: start;
   }
-  #group-setup { grid-column: 1; }
-  #group-modes { grid-column: 2; }
-  #group-exec  { grid-column: 3; }
+  .brand        { grid-column: 1 / -1; }
+  #group-setup  { grid-column: 1; }
+  #group-modes  { grid-column: 2; }
+  #group-exec   { grid-column: 3; }
 }
 
 
 /* =========================================
-   BRAND STRIP  (brushed-steel pill)
+   BRAND STRIP  (chrome nameplate pill)
    ========================================= */
 
 .brand {
   position: relative;
   text-align: center;
   font-weight: 800;
-  font-size: 22px;
-  letter-spacing: .5px;
-  margin-bottom: 18px;
-  padding: 12px 0;
+  font-size: 19px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 10px 0;
   border-radius: 999px;
   color: #1a1f27;
 
   background:
     linear-gradient(90deg,
-      rgba(255,255,255,.15),
-      rgba(255,255,255,.35) 20%,
-      rgba(0,0,0,.25) 45%,
-      rgba(255,255,255,.25) 70%,
-      rgba(255,255,255,.12)
+      rgba(255,255,255,.10) 0%,
+      rgba(255,255,255,.40) 20%,
+      rgba(0,0,0,.15)       45%,
+      rgba(255,255,255,.30) 70%,
+      rgba(255,255,255,.10) 100%
     ),
-    linear-gradient(180deg, #d9dee4, #aab3bc);
+    linear-gradient(180deg, var(--steel-3), var(--steel-1));
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.45),
-    inset 0 -2px 0 rgba(0,0,0,.35),
-    0 6px 14px rgba(0,0,0,.35);
+    inset 0 1px 0 rgba(255,255,255,.50),
+    inset 0 -2px 0 rgba(0,0,0,.30),
+    0 4px 12px rgba(0,0,0,.40),
+    0 1px  3px rgba(0,0,0,.30);
 }
 
-/* Embossed ring overlay */
+/* Inner bevel ring */
 .brand::after {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: 999px;
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.35),
-    inset 0 -1px 0 rgba(0,0,0,.35);
+    inset 0 1px 0 rgba(255,255,255,.30),
+    inset 0 -1px 0 rgba(0,0,0,.25);
   pointer-events: none;
 }
 
 
 /* =========================================
-   CONTROL GROUPS  (dark panel inserts)
+   CONTROL GROUPS  (dark recessed panels)
    ========================================= */
 
 .group {
-  border-radius: 16px;
-  border: 1px solid rgba(255,255,255,.10);
-  padding: 16px 14px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,.50);
+  padding: 14px 12px 12px;
   position: relative;
   overflow: hidden;
 
   background:
-    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
-    linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.75));
+    linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.01)),
+    linear-gradient(180deg, #18191e, #111215);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.10),
-    inset 0 -1px 0 rgba(0,0,0,.60),
-    0 10px 18px rgba(0,0,0,.22);
+    inset 0 1px 0 rgba(255,255,255,.08),
+    inset 0 -1px 0 rgba(0,0,0,.50),
+    0 2px 8px rgba(0,0,0,.35);
 }
 
-/* Inner bevel */
+/* Inner edge bevel */
 .group::before {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 16px;
+  border-radius: 12px;
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.06),
-    inset 0 -1px 0 rgba(0,0,0,.35);
+    inset 0 1px 0 rgba(255,255,255,.05),
+    inset 0 -1px 0 rgba(0,0,0,.40);
   pointer-events: none;
 }
 
 .group h2 {
-  font-size: 12px;
-  letter-spacing: 1px;
+  font-size: 10px;
+  letter-spacing: 1.4px;
   text-transform: uppercase;
-  color: rgba(255,255,255,.78);
+  color: rgba(255,255,255,.45);
   margin-bottom: 12px;
 }
 
 
 /* =========================================
-   BAR BUTTONS  (brushed-steel horizontal bars)
+   BAR BUTTONS  (polished steel keys)
    ========================================= */
 
 .barbtn {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 11px;
   width: 100%;
-  padding: 14px 16px;
-  margin-bottom: 12px;
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,.16);
+  padding: 13px 14px;
+  margin-bottom: 8px;
+  border-radius: 8px;
   cursor: pointer;
   user-select: none;
   text-align: left;
-  transition: transform .08s ease, filter .12s ease, box-shadow .12s ease;
+  transition: transform .07s ease, filter .10s ease, box-shadow .10s ease;
 
-  /* Brushed steel with grain texture */
+  /* Polished metal face — smooth highlight from upper-left */
   background:
-    repeating-linear-gradient(
-      90deg,
-      rgba(255,255,255,.06) 0px,
-      rgba(255,255,255,.06) 1px,
-      rgba(0,0,0,.06) 2px,
-      rgba(0,0,0,.06) 3px
+    linear-gradient(158deg,
+      rgba(255,255,255,.34)  0%,
+      rgba(255,255,255,.10) 40%,
+      rgba(255,255,255,.04) 65%,
+      rgba(0,0,0,.12)       100%
     ),
-    linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.08) 35%, rgba(0,0,0,.45)),
     linear-gradient(180deg, var(--steel-2), var(--steel-1));
   color: #0e1116;
+
+  /* Top rim highlight + bottom ledge depth */
+  border: 1px solid rgba(0,0,0,.30);
+  border-top-color: rgba(255,255,255,.32);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.35),
-    inset 0 -3px 0 rgba(0,0,0,.45),
-    0 10px 18px rgba(0,0,0,.26);
+    inset 0 1px 0 rgba(255,255,255,.30),
+    0 2px 0 rgba(0,0,0,.50),
+    0 4px 10px rgba(0,0,0,.22);
 }
 
 .barbtn .label {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
-  letter-spacing: .15px;
+  letter-spacing: .4px;
   color: #10141b;
 }
 
 .barbtn:hover {
-  filter: brightness(1.03);
+  filter: brightness(1.04);
 }
 
+/* Pressed: key travels down, bottom ledge collapses */
 .barbtn:active {
-  transform: translateY(1px);
+  transform: translateY(2px);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.28),
-    inset 0 -1px 0 rgba(0,0,0,.50),
-    0 6px 12px rgba(0,0,0,.22);
+    inset 0 2px 4px rgba(0,0,0,.18),
+    0 1px 0 rgba(0,0,0,.40),
+    0 1px 4px rgba(0,0,0,.18);
 }
 
 /* Selected mode: green backlight ring */
 .barbtn.is-selected {
-  border-color: rgba(56,224,123,.55);
+  border-color: rgba(56,224,123,.50);
+  border-top-color: rgba(56,224,123,.60);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.35),
-    inset 0 -3px 0 rgba(0,0,0,.45),
-    0 0 0 2px rgba(56,224,123,.18),
-    0 0 22px rgba(56,224,123,.18);
+    inset 0 1px 0 rgba(255,255,255,.28),
+    0 2px 0 rgba(0,0,0,.50),
+    0 0 0 2px rgba(56,224,123,.16),
+    0 0 18px rgba(56,224,123,.20);
 }
 
 .barbtn.is-selected .label {
   text-shadow:
-    0 0 10px rgba(56,224,123,.42),
-    0 0 22px rgba(56,224,123,.22);
+    0 0 10px rgba(56,224,123,.38),
+    0 0 20px rgba(56,224,123,.18);
 }
 
 /* Locked: dimmed like a disabled appliance control */
 .barbtn[data-locked="true"] {
-  opacity: .52;
+  opacity: .46;
 }
 
 
@@ -311,8 +302,8 @@ header p {
    ========================================= */
 
 .barbtn .icon {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -320,9 +311,9 @@ header p {
 }
 
 .barbtn .icon svg {
-  width: 20px;
-  height: 20px;
-  stroke: rgba(16,20,27,.85);
+  width: 18px;
+  height: 18px;
+  stroke: rgba(16,20,27,.80);
   stroke-width: 2;
   fill: none;
   stroke-linecap: round;
@@ -335,35 +326,35 @@ header p {
 }
 
 .barbtn[data-locked="true"] .icon svg {
-  stroke: rgba(16,20,27,.45);
+  stroke: rgba(16,20,27,.38);
 }
 
 
 /* =========================================
-   POWER BUTTON
+   POWER BUTTON  (distinct from mode keys)
    ========================================= */
 
 #btnPower {
-  padding: 16px 18px;
-  border: 2px solid rgba(0,0,0,.55);
+  padding: 14px 16px;
+  border: 2px solid rgba(0,0,0,.45);
+  border-top-color: rgba(255,255,255,.30);
 
   background:
-    repeating-linear-gradient(
-      90deg,
-      rgba(255,255,255,.08) 0px,
-      rgba(255,255,255,.08) 1px,
-      rgba(0,0,0,.08) 2px,
-      rgba(0,0,0,.08) 3px
+    linear-gradient(158deg,
+      rgba(255,255,255,.40)  0%,
+      rgba(255,255,255,.14) 40%,
+      rgba(255,255,255,.04) 65%,
+      rgba(0,0,0,.10)       100%
     ),
-    linear-gradient(180deg, #e5eaef, #b8c0c8);
+    linear-gradient(180deg, #e8edf2, #bcc4cc);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.45),
-    inset 0 -3px 0 rgba(0,0,0,.55),
-    0 10px 18px rgba(0,0,0,.30);
+    0 2px 0 rgba(0,0,0,.55),
+    0 6px 14px rgba(0,0,0,.28);
 }
 
 #btnPower .icon svg {
-  stroke: var(--ka-red-2);   /* Empire red accent */
+  stroke: var(--ka-red-2);
   stroke-width: 2.2;
 }
 
@@ -373,16 +364,17 @@ header p {
 
 /* Power-ON: red glow ring */
 body.power-on #btnPower {
-  border-color: rgba(177,18,27,.65);
+  border-color: rgba(177,18,27,.60);
+  border-top-color: rgba(220,50,50,.70);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.45),
-    inset 0 -3px 0 rgba(0,0,0,.55),
-    0 0 0 2px rgba(177,18,27,.25),
-    0 0 24px rgba(177,18,27,.35);
+    inset 0 1px 0 rgba(255,255,255,.40),
+    0 2px 0 rgba(0,0,0,.55),
+    0 0 0 2px rgba(177,18,27,.22),
+    0 0 22px rgba(177,18,27,.30);
 }
 
 body.power-on #btnPower .label {
-  text-shadow: 0 0 10px rgba(177,18,27,.35);
+  text-shadow: 0 0 8px rgba(177,18,27,.30);
 }
 
 
@@ -391,23 +383,23 @@ body.power-on #btnPower .label {
    ========================================= */
 
 #btnStartStop .icon svg {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
 }
 
 #btnStartStop .icon polygon,
 #btnStartStop .icon rect {
-  fill: rgba(0,0,0,.72);
+  fill: rgba(0,0,0,.68);
 }
 
 #btnStartStop .icon line {
-  stroke: rgba(0,0,0,.50);
+  stroke: rgba(0,0,0,.45);
   stroke-width: 1.5;
 }
 
 #btnStartStop .icon {
-  opacity: .92;
-  filter: drop-shadow(0 1px 0 rgba(255,255,255,.25));
+  opacity: .90;
+  filter: drop-shadow(0 1px 0 rgba(255,255,255,.22));
 }
 
 
@@ -416,10 +408,10 @@ body.power-on #btnPower .label {
    ========================================= */
 
 .led-group {
-  margin-top: 10px;
+  margin-top: 8px;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px 12px;
+  gap: 7px 8px;
 }
 
 #temp-leds {
@@ -430,37 +422,39 @@ body.power-on #btnPower .label {
 .led {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 8px 10px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,.10);
-  background: rgba(0,0,0,.35);
-  color: rgba(255,255,255,.82);
-  font-size: 12px;
+  gap: 8px;
+  padding: 7px 9px;
+  border-radius: 7px;
+  border: 1px solid rgba(255,255,255,.07);
+  background: rgba(0,0,0,.40);
+  color: rgba(255,255,255,.60);
+  font-size: 11px;
+  letter-spacing: .3px;
 }
 
 /* Lamp dot */
 .led::before {
   content: "";
   flex-shrink: 0;
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: #6f7686;
+  background: #3a3d48;
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.18),
-    0 0 0 2px rgba(255,255,255,.06);
+    inset 0 1px 0 rgba(255,255,255,.12),
+    0 0 0 1px rgba(0,0,0,.35);
 }
 
 .led.active {
-  color: #fff;
+  color: rgba(255,255,255,.92);
+  background: rgba(0,0,0,.30);
 }
 
 .led.active::before {
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.18),
-    0 0 10px rgba(255,255,255,.25),
-    0 0 0 2px rgba(255,255,255,.07);
+    inset 0 1px 0 rgba(255,255,255,.20),
+    0 0 8px rgba(255,255,255,.20),
+    0 0 0 1px rgba(255,255,255,.06);
 }
 
 /* --- Status LED active colors --- */
@@ -477,39 +471,41 @@ body.power-on #btnPower .label {
 #ledTempLow.active::before {
   background: var(--led-blue);
   box-shadow:
-    0 0 12px rgba(75,182,255,.55),
-    0 0 0 2px rgba(255,255,255,.07);
+    0 0 10px rgba(75,182,255,.60),
+    0 0 0 1px rgba(255,255,255,.06);
 }
 
 #ledTempMed.active::before {
   background: #fff;
   box-shadow:
-    0 0 12px rgba(255,255,255,.75),
-    0 0 0 2px rgba(255,255,255,.07);
+    0 0 10px rgba(255,255,255,.70),
+    0 0 0 1px rgba(255,255,255,.06);
 }
 
 #ledTempHigh.active::before {
   background: var(--led-red);
   box-shadow:
-    0 0 12px rgba(255,75,75,.55),
-    0 0 0 2px rgba(255,255,255,.07);
+    0 0 10px rgba(255,75,75,.60),
+    0 0 0 1px rgba(255,255,255,.06);
 }
 
-/* --- Enhanced glows for specific status LEDs --- */
+/* --- Enhanced glows for key status LEDs --- */
 
 #ledReady.active::before {
+  width: 10px;
+  height: 10px;
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.2),
-    0 0 16px rgba(56,224,123,.75),
-    0 0 30px rgba(56,224,123,.35),
-    0 0 0 2px rgba(255,255,255,.08);
+    inset 0 1px 0 rgba(255,255,255,.22),
+    0 0 14px rgba(56,224,123,.80),
+    0 0 28px rgba(56,224,123,.35),
+    0 0 0 1px rgba(255,255,255,.08);
 }
 
 #ledBrewing.active::before {
   box-shadow:
-    0 0 16px rgba(255,255,255,.85),
-    0 0 30px rgba(255,255,255,.35),
-    0 0 0 2px rgba(255,255,255,.08);
+    0 0 14px rgba(255,255,255,.85),
+    0 0 28px rgba(255,255,255,.35),
+    0 0 0 1px rgba(255,255,255,.08);
   animation: breathe 1.1s ease-in-out infinite;
 }
 
@@ -517,26 +513,20 @@ body.power-on #btnPower .label {
 
 #temp-leds .led {
   position: relative;
-  padding-left: 32px;
+  padding-left: 28px;
 }
 
 #temp-leds .led::before {
   position: absolute;
-  left: 12px;
+  left: 10px;
   top: 50%;
   transform: translateY(-50%);
 }
 
-/* --- Status LED tweaks --- */
+/* --- Status LED container --- */
 
 #status-leds .led {
   position: relative;
-}
-
-/* "Ready" uses a slightly larger lamp dot */
-#ledReady::before {
-  width: 12px;
-  height: 12px;
 }
 
 
@@ -544,23 +534,21 @@ body.power-on #btnPower .label {
    ANIMATIONS
    ========================================= */
 
-/* Brewing LED: soft breathing pulse */
 @keyframes breathe {
   0%, 100% { transform: scale(1);   opacity: 1;   }
-  50%       { transform: scale(.92); opacity: .65; }
+  50%       { transform: scale(.90); opacity: .60; }
 }
 
-/* Low Water LED: warning blink */
 @keyframes blinkLamp {
   0%, 49%   { opacity: 1;   }
-  50%, 100% { opacity: .25; }
+  50%, 100% { opacity: .20; }
 }
 
 #ledLowWater.blink::before {
   animation: blinkLamp .55s steps(2, end) infinite;
   box-shadow:
-    0 0 16px rgba(255,216,74,.55),
-    0 0 0 2px rgba(255,255,255,.08);
+    0 0 14px rgba(255,216,74,.65),
+    0 0 0 1px rgba(255,255,255,.08);
 }
 
 
@@ -570,8 +558,8 @@ body.power-on #btnPower .label {
 
 /* Dim the whole panel when OFF */
 body:not(.power-on) .machine {
-  filter: brightness(.6) saturate(.75);
-  transition: filter .4s ease;
+  filter: brightness(.58) saturate(.70);
+  transition: filter .45s ease;
 }
 
 /* Keep Power button fully visible when OFF */
@@ -579,9 +567,9 @@ body:not(.power-on) #btnPower {
   filter: none !important;
   opacity: 1 !important;
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.35),
-    inset 0 -3px 0 rgba(0,0,0,.55),
-    0 0 0 2px rgba(177,18,27,.25);
+    inset 0 1px 0 rgba(255,255,255,.30),
+    0 2px 0 rgba(0,0,0,.55),
+    0 0 0 2px rgba(177,18,27,.20);
 }
 
 /* Suppress LED glow when OFF */
@@ -589,11 +577,11 @@ body:not(.power-on) .led::before {
   box-shadow: none !important;
 }
 
-/* Buttons look inactive when OFF */
+/* Buttons look flat/inactive when OFF */
 body:not(.power-on) .barbtn {
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.08),
-    inset 0 -2px 0 rgba(0,0,0,.6);
+    inset 0 1px 0 rgba(255,255,255,.06),
+    0 1px 0 rgba(0,0,0,.45);
 }
 
 
@@ -603,35 +591,37 @@ body:not(.power-on) .barbtn {
 
 .howto,
 .annotations {
-  max-width: 980px;
-  margin: 14px auto 0;
-  padding: 18px;
-  border-radius: 16px;
-  border: 1px solid rgba(255,255,255,.10);
+  max-width: 960px;
+  margin: 16px auto 0;
+  padding: 18px 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.08);
   background:
-    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
-    rgba(0,0,0,.50);
+    linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.01)),
+    rgba(0,0,0,.45);
   box-shadow:
-    0 14px 26px rgba(0,0,0,.25),
-    inset 0 1px 0 rgba(255,255,255,.08);
+    0 12px 28px rgba(0,0,0,.28),
+    inset 0 1px 0 rgba(255,255,255,.07);
 }
 
 .howto h3,
 .annotations h3 {
-  font-size: 14px;
-  letter-spacing: .2px;
-  color: rgba(255,255,255,.92);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .4px;
+  color: rgba(255,255,255,.88);
   margin-bottom: 10px;
 }
 
 .howto ol {
-  margin-left: 20px;
-  color: rgba(226,230,240,.9);
-  font-size: 13.5px;
+  margin-left: 18px;
+  color: rgba(220,226,238,.85);
+  font-size: 13px;
+  line-height: 1.6;
 }
 
 .howto li {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .howto strong {
@@ -640,8 +630,9 @@ body:not(.power-on) .barbtn {
 
 .annotations ul {
   margin-left: 18px;
-  color: rgba(210,216,230,.9);
-  font-size: 13.5px;
+  color: rgba(210,218,232,.82);
+  font-size: 13px;
+  line-height: 1.6;
 }
 
 .annotations li {
